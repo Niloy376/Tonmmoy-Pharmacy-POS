@@ -1,1 +1,3 @@
-# Tonmmoy-Pharmacy-POS
+# Welcome to your Lovable project
+
+TODO: Document your project here

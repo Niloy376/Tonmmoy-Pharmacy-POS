@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Clinical Grid Design System — PharmaStream BD */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 171 77% 34%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 346 84% 61%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 171 77% 34%;
+
+    --radius: 0.5rem;
+    --radius-outer: 8px;
+    --radius-inner: 4px;
+
+    /* Functional Colors */
+    --accent-due: 24 95% 53%;
+    --accent-due-foreground: 0 0% 100%;
+    --accent-expiry: 346 84% 61%;
+    --accent-expiry-foreground: 0 0% 100%;
+    --accent-success: 142 76% 36%;
+    --accent-success-foreground: 0 0% 100%;
+
+    /* Sidebar */
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 80%;
+    --sidebar-primary: 171 77% 34%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 47% 16%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 222 47% 16%;
+    --sidebar-ring: 171 77% 34%;
+    --sidebar-muted: 215 16% 47%;
+
+    /* Motion */
+    --ease-swift: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-fast: 150ms;
+
+    /* Typography */
+    --font-display: 'Inter', 'Hind Siliguri', sans-serif;
+    --font-body: 'Inter', 'Hind Siliguri', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .font-mono-data {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.875rem;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .pos-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    height: 100svh;
+  }
+
+  .pos-grid-with-nav {
+    display: grid;
+    grid-template-columns: 240px 1fr 360px;
+    height: 100svh;
+  }
+
+  .status-badge {
+    @apply text-[10px] uppercase tracking-wider font-bold px-1.5 py-0.5;
+    border-radius: var(--radius-inner);
+  }
+
+  .status-expired {
+    background-color: hsl(346 84% 61% / 0.1);
+    color: hsl(346 84% 61%);
+    border: 1px solid hsl(346 84% 61% / 0.2);
+  }
+
+  .status-low-stock {
+    background-color: hsl(24 95% 53% / 0.1);
+    color: hsl(24 95% 53%);
+    border: 1px solid hsl(24 95% 53% / 0.2);
+  }
+
+  .status-in-stock {
+    background-color: hsl(142 76% 36% / 0.1);
+    color: hsl(142 76% 36%);
+    border: 1px solid hsl(142 76% 36% / 0.2);
+  }
+
+  .medicine-card {
+    @apply bg-card border border-border p-3 flex flex-col gap-1;
+    border-radius: var(--radius-outer);
+    transition: transform var(--duration-fast) var(--ease-swift), box-shadow var(--duration-fast) var(--ease-swift);
+  }
+
+  .medicine-card:hover {
+    @apply shadow-md;
+    transform: translateY(-2px);
+  }
+}
+
+/* Print Styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .fixed {
+    position: absolute !important;
+    inset: 0 !important;
+  }
+  .fixed > div:last-child,
+  .fixed > div:last-child * {
+    visibility: visible;
+  }
+  .fixed > div:last-child {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  .print\\:hidden {
+    display: none !important;
+  }
+}
